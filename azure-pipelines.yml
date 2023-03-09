@@ -4,7 +4,17 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
 trigger:
-- main
+  branches:
+    include:
+    - master
+    - releases/*
+    - feature/*
+    exclude:
+    - releases/old*
+    - feature/*-working
+  paths:
+    include:
+    - docs/*.md
 
 pool:
   vmImage: ubuntu-latest
